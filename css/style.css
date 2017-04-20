@@ -1,0 +1,109 @@
+.js div#preloader 
+{ 
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	z-index: 999; 
+	width: 100%; 
+	height: 100%; 
+	overflow: visible; 
+	background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center; 
+}
+
+ul#events {
+    padding: 0;
+    list-style-type: none;
+    display: none;
+}
+
+ul#events li{
+    background-color: #fff;
+    color: #000;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    position: relative;
+    cursor: pointer;
+}
+
+
+ul#events li:hover {
+    background-color: #fafafa;
+}
+
+.today
+{
+	float: right;
+	padding: 5px;
+	margin-bottom: 5px;
+	background-color: #ff9999;
+	font-weight: bold;
+	border-radius: 4px 4px 4px 4px;
+}
+
+.countbutton {
+    background: white;
+    border: 1px solid #9197a3;
+    border-radius: 2px;
+    color: #4e5665;
+    display: inline-block;
+    height: auto;
+    line-height: 18px;
+    min-width: 15px;
+    padding: 0 3px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.fbbuttonstyle
+{
+    background-color: #4e69a2;
+    border-color: #435a8b #3c5488 #334c83;
+}
+
+.dayNumber
+{
+	font-size: 50px;
+	margin-left: 30px;
+}
+.street
+{
+	/*margin-left: 30px;*/
+}
+
+.monthName
+{
+	margin-left: 30px;
+}
+
+.dateEvent {
+    float: left;
+    position: absolute;
+    top: 0px;
+    padding: 2px 10px;
+    background-color: #CE2A46;
+    /*right: -4px;*/
+    border: 3px solid #fff;
+    font-weight: bold;
+    color: #fff;
+    font-size:16px;
+    margin-top: 5px;
+}
+
+.dayofweek
+{
+	color:#4b4f56;
+}
+
+.street
+{
+	color:#4b4f56;
+}
+
+.confirmed
+{
+	color:#90949c;
+}

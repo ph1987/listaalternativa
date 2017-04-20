@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/jesipafizi/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+  canvas {border: 1px solid black;}
+</style>
+</head>
+<body>
+    <ul class="list">
+      <li id="alpha">banana</li>
+      <li id="beta">catv</li>
+      <li id="delta">apple</li>
+      <li id="alpha">banana3</li>
+      <li id="beta">cat</li>
+      <li id="delta">apple</li>
+      <li id="alpha">banana5</li>
+      <li id="beta">cat</li>
+      <li id="delta">apple4</li>
+      <li id="alpha">banana1</li>
+      <li id="beta">cat</li>
+      <li id="delta">apples</li>
+      <li id="alpha">banana</li>
+      <li id="beta">cat</li>
+      <li id="delta">apple</li>
+    </ul>
+  <p id="debug"></p>
+<script id="jsbin-javascript">
+
+ $(".list li").sort(dec_sort).appendTo('.list');
+ //$("#debug").text("Output:");
+
+// accending sort
+function asc_sort(a, b){
+        return ($(b).text()) < ($(a).text()) ? 1 : -1;    
+    }
+
+    // decending sort
+    function dec_sort(a, b){
+        return ($(b).text()) > ($(a).text()) ? 1 : -1;    
+    }
+</script>
+</body>
+</html>

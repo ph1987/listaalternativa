@@ -106,7 +106,7 @@ if (!is_null($id))
 		<p><input name="name" type="text" placeholder="Nome do evento" id="nome"  /></p>
 		<p><input name="type" type="text" placeholder="Tipo do evento" id="type"  /></p>
 		<p><input name="state" type="text" placeholder="Estado do evento" value="rj" id="estado"  /></p>
-		<p><input name="city" type="text" placeholder="Cidade do evento" value="rio de janeiro" id="city"  /></p>
+		<p><input name="city" type="text" placeholder="Cidade do evento" value="rio-de-janeiro" id="city"  /></p>
 		<p>
 			Status: 
 			<input type="radio" name="status" value="1" checked="checked" />Ativo

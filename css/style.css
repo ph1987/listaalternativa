@@ -107,3 +107,10 @@ ul#events li:hover {
 {
 	color:#90949c;
 }
+
+a.btnfilters.active {
+    color: #fff;
+    background-color: #000;
+    pointer-events: none;
+    cursor: default;
+}

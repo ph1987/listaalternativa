@@ -14,16 +14,31 @@ if (!$conn)
 
 $url = $_SERVER['SERVER_NAME'];
 
-
+/*
 $tipo = $_GET["tipo"];
 if (isset($tipo)) 
 {
     $query = "SELECT * FROM events WHERE type LIKE '%" . $tipo . "%'";
 }
-else
+*/
+
+$local = "rio-de-janeiro";  //default place
+
+if(isset($_COOKIE['lacity']))
 {
-    $query = "SELECT * FROM events";
+    $local = $_COOKIE['lacity'];
 }
+
+if(isset($_GET['local'])) 
+{
+    $local = $_GET["local"];
+    setcookie('lacity', $local, (time() + (30 * 24 * 3600)));
+}
+
+
+$query = "SELECT * FROM events WHERE city LIKE '%" . $local . "%'";
+
+
 $dados = mysqli_query($conn, $query);
 $linha = mysqli_fetch_assoc($dados); // transforma os dados em um array
 $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = mysql_num_rows($dados)
@@ -44,9 +59,9 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Lista Alternativa - Festa de rock no Rio de Janeiro">
+    <meta name="description" content="Lista Alternativa - Festas alternativas pelo Brasil">
     <meta name="author" content="Philipe Tavares">
-    <meta name="keywords" content="lista, alternativa, la, amiga, festa, balada, rio de janeiro, rj, rio, brasil, rock, indie, metal, poprock, teatro odisseia, casa da matriz">
+    <meta name="keywords" content="lista, alternativa, la, amiga, festa, balada, rio de janeiro, rj, rio, sp, brasilia, df, sampa, sao paulo, brasil, rock, indie, metal, poprock, teatro odisseia, casa da matriz, bagaceira, pop">
     
     <link rel="icon" href="http://listaalternativa.com/favicon.ico">
     
@@ -185,21 +200,24 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
       <img src="http://listaalternativa.com/imgs/loading.gif" id="loading" style="display:none; margin-bottom: 25px; margin-top:10px;" />
 
       <div id="filters" class="filters" style="margin-top:10px; margin-bottom:10px; display: none;">
-        <!--<select id="state" name="state" class="slctfilters">
-          <option value="rj">&nbsp;RJ</option>
-          <option value="sp">&nbsp;SP</option>
-        </select>-->
-        <a href="/" class="btnfilters" style="text-decoration: none;">&#9835; todos</a>
-        <a href="<?php $url ?>/index.php?tipo=rock" class="btnfilters" style="text-decoration: none;">&#9835; rock</a>
-        <a href="<?php $url ?>/index.php?tipo=pop" class="btnfilters" style="text-decoration: none;">&#9835; pop</a>
-        <a href="<?php $url ?>/index.php?tipo=bagaceira" class="btnfilters" style="text-decoration: none;">&#9835; bagaceira</a>
+        <form method="get" action="" name="filters">
+        <select id="local" name="local" class="slctfilters" onchange="javascript:form.submit();">
+          <option value="brasilia" <?= ($local == 'brasilia') ? 'selected="selected"':'';  ?>>&nbsp;Brasília - DF</option>
+          <option value="rio-de-janeiro" <?= ($local == 'rio-de-janeiro') ? 'selected="selected"':''; ?>>&nbsp;Rio de Janeiro - RJ</option>
+          <option value="sao-paulo" <?= ($local == 'sao-paulo') ? 'selected="selected"':'';  ?>>&nbsp;São Paulo - SP</option>
+        </select>
+        <!--<a href="/" class="btnfilters <?= ($tipo == '' || is_null($tipo)) ? 'active':''; ?>" style="text-decoration: none;">&#9835; todos</a>
+        <a href="<?php $url ?>/index.php?tipo=rock" class="btnfilters <?= ($tipo == 'rock') ? 'active':''; ?>" style="text-decoration: none;">&#9835; rock</a>
+        <a href="<?php $url ?>/index.php?tipo=pop" class="btnfilters <?= ($tipo == 'pop') ? 'active':''; ?>" style="text-decoration: none;">&#9835; pop</a>
+        <a href="<?php $url ?>/index.php?tipo=bagaceira" class="btnfilters <?= ($tipo == 'bagaceira') ? 'active':''; ?>" style="text-decoration: none;">&#9835; bagaceira</a>-->
+        </form>
       </div>
 
       <ul id="events" class="list"></ul>
       <br/>
 
       <footer class="footer">
-        <p>&copy; 2016 lista alternativa \,,/</p>
+        <p>&copy; <?php echo date("Y"); ?> lista alternativa \,,/</p>
       </footer>
 
     </div> <!-- /container -->

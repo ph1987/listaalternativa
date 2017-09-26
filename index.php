@@ -217,7 +217,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
       <br/>
 
       <footer class="footer">
-        <p>&copy; <?php echo date("Y"); ?> lista alternativa \,,/</p>
+        <p>&copy; 2016 lista alternativa \,,/</p>
       </footer>
 
     </div> <!-- /container -->

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Lista Alternativa - Festas alternativas pelo Brasil">
+    <meta name="author" content="Philipe Tavares">
+    <meta name="keywords" content="lista, alternativa, la, amiga, festa, balada, rio de janeiro, rj, rio, sp, brasilia, df, sampa, sao paulo, brasil, rock, indie, metal, poprock, teatro odisseia, casa da matriz, bagaceira, pop">
+    
+    <link rel="icon" href="favicon.ico">
+    
+    <title>Lista Alternativa</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--
+        list_id_events.push("/1626656364254996/events");  //Buffalos bar
+        list_id_events.push("/119611485475/events");      //Sex tape
+        list_id_events.push("/125888230755539/events");   //Heavy Duty
+        list_id_events.push("/314336858699755/events");   //Espaço Acústica
+        list_id_events.push("/422755627856219/events");   //I <3 90's   
+        list_id_events.push("/258320294264592/events");   //Bagaceira
+        list_id_events.push("/154839164598367/events");   //Game Over Party
+        list_id_events.push("/506413419446376/events");   //Carioca and Roll
+        list_id_events.push("/100000194106140/events");   //Bar do B Online
+        list_id_events.push("/381656911885092/events");   //Bar do B 
+        list_id_events.push("/320065294728744/events");   //Rockaway
+        list_id_events.push("/1421927384699767/events");  //Rock and Beats
+        list_id_events.push("/283787185071703/events");   //Cabaret Lounge Bar
+        list_id_events.push("/167725643321168/events");   //La Esquina
+        list_id_events.push("/88895578347/events");       //Saloon 79
+        list_id_events.push("/249984455354111/events");   //Rock Back Thursday
+        list_id_events.push("/139108996111079/events");   //DDK RJ
+        list_id_events.push("/218655051597553/events");   //Espaço Rampa  
+        list_id_events.push("/223604614378487/events");   //DJ Felipe Malfoy  
+        list_id_events.push("/128554260503491/events");   //Crush  
+        list_id_events.push("/537781586270751/events");   //TRIP
+    -->
+</head>
+<body>
+    <script>
+        var list_id_events = [];
+        var vnts = [{
+                "id": 287688837913011,
+                "name": "casa da matriz",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"
+            }, {
+                "id": 143286195735246,
+                "name": "teatro odisseia",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"
+            }, {
+                "id": 145492998804017,
+                "name": "college rock",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"
+            }, {
+                "id": 1626656364254996,
+                "name": "buffalos bar",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"
+            }, {
+                "id": 125888230755539,
+                "name": "heavy duty",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1" 
+            }, {
+                "id": 422755627856219,
+                "name": "i <3 90s",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"  
+            }, {
+                "id": 100000194106140,
+                "name": "bar do b online",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"  
+            }, {
+                "id": 381656911885092,
+                "name": "bar do b",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"       
+            }, {
+                "id": 320065294728744,
+                "name": "rockaway",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"    
+            }, {
+                "id": 1421927384699767,
+                "name": "rock and beats",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1" 
+            }, {
+                "id": 88895578347,
+                "name": "saloon 79",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"    
+            }, {
+                "id": 139108996111079,
+                "name": "ddk",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"  
+            }, {
+                "id": 167725643321168,
+                "name": "la esquina",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"  
+            }, {
+                "id": 506413419446376,
+                "name": "carioca and roll",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"
+            }, {
+                "id": 154839164598367,
+                "name": "game over party",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1" 
+            }, {
+                "id": 218655051597553,
+                "name": "espaço rampa",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1" 
+            }, {
+                "id": 128554260503491,
+                "name": "crush",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1"  
+            }, {
+                "id": 537781586270751,
+                "name": "trip",
+                "uf": "rj",
+                "cidade": "rio-de-janeiro",
+                "type": "rock",
+                "status": "1" 
+            }
+        ]
+        console.log(vnts);
+        for (p=0; p<vnts.length; p++)
+        {
+            if (vnts[p].status == 1)
+            {
+                if (vnts[p].type == "rock")
+                {
+                    console.log(vnts[p].id);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -2,9 +2,8 @@
 <html lang="pt-br">
   <head>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,25 +12,24 @@
     <meta name="author" content="Philipe Tavares">
     <meta name="keywords" content="lista, alternativa, la, amiga, festa, balada, rio de janeiro, rj, rio, brasil, rock, indie, metal, poprock, teatro odisseia, casa da matriz">
     
-    <link rel="icon" href="http://listaalternativa.com/favicon.ico">
+    <link rel="icon" href="favicon.ico">
     
     <title>Lista Alternativa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="http://listaalternativa.com/css/style.css" rel="stylesheet">
-    <link href="http://listaalternativa.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="http://listaalternativa.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="http://listaalternativa.com/jumbotron-narrow.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="http://listaalternativa.com/assets/js/ie-emulation-modes-warning.js"></script>
-    <script type="text/javascript" src="data.json"></script>
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,7 +41,7 @@
   <!--<body style="background-image: url(http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg);">-->
   <body style="background-color:#eee; font-family: 'Roboto Condensed', sans-serif;">
     
-    <script src="http://listaalternativa.com/js/moment.js"></script>
+    <script src="js/moment.js"></script>
     <script>
 
       // Load the SDK asynchronously
@@ -137,7 +135,7 @@
           </ul>
         </nav>
         -->
-        <h3 class="text-muted" style="font-weight:bold; font-size:25px;"><img src="http://listaalternativa.com/imgs/icon.png" style="width:40px;" />lista alternativa</h3>
+        <h3 class="text-muted" style="font-weight:bold; font-size:25px;"><img src="imgs/icon.png" style="width:40px;" />lista alternativa</h3>
         <!--<div id="status"></div>-->
       </div>
       
@@ -148,7 +146,7 @@
         <br/>
       </div>
 
-      <img src="http://listaalternativa.com/imgs/loading.gif" id="loading" style="display:none; margin-bottom: 25px;" />
+      <img src="imgs/loading.gif" id="loading" style="display:none; margin-bottom: 25px;" />
       <ul id="events" class="list"></ul>
 
       <footer class="footer">
@@ -157,7 +155,7 @@
 
     </div> <!-- /container -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://listaalternativa.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
     <!-- faz a ordenação -->
     <script id="jsbin-javascript">
     function order()                                           //função que ordena os eventos pela data de forma crescente
@@ -191,21 +189,14 @@
         var list_id_events = [];
         var list_events_added = [];
 
-        var mydata = JSON.parse(data);
-        alert(mydata[0].name);
-        alert(mydata[0].age);
-        alert(mydata[1].name);
-        alert(mydata[1].age);
-
         //adicionando ids das páginas que criam eventos
-        list_id_events.push("/100000194106140/events");   //Bar do B Online
-        list_id_events.push("/381656911885092/events");   //Bar do B 
-        list_id_events.push("/547532252113555/events");   //Clube dos 30
+        list_id_events.push("/287688837913011/events");   //jack dnls
 
         var listeventsLen = list_id_events.length;
+
         for (k=0; k<listeventsLen; k++)
         {
-            FB.api(list_id_events[k], 'GET', { "fields": "start_time,cover,name,attending_count, place, maybe_count" },
+            FB.api(list_id_events[k], 'GET', { "fields": "start_time,cover,name,attending_count, place, maybe_count" }, { "limit": "50" },
             function (response)
             {
                 var list = [];
@@ -223,18 +214,22 @@
                     }
                   }
 
+                  
+
                   if (found == 0)
                   {
                     var diffindays = -10;
                     var eventDateRaw = moment(response.data[i].start_time).format('YYYY-MM-DD HH:mm:ss');    //data no formato cru 
                     var eventDateRawBR = moment(response.data[i].start_time).format('DD-MM-YYYY HH:mm:ss');  //data no formato BR e cru
                     var eventDateRawTemp = moment(eventDateRaw, "YYYY-MM-DD HH:mm:ss").add(3, 'h');          //data no formato cru adicionando 3h
-                    var eventDatePlus3hrs = eventDateRawTemp.format('YYYY-MM-DD HH:mm:ss');                  
+                    var eventDatePlus3hrs = eventDateRawTemp.format('YYYY-MM-DD HH:mm:ss');   
                     if (eventDatePlus3hrs > dateNow && eventDatePlus3hrs <= dateLimit)
                     {
+                      
                       var day = moment(eventDateRaw).format('DD');
                       var month = moment(eventDateRaw).format('M');
                       var year = moment(eventDateRaw).format('YYYY');
+                      
 
                       var dayToday = moment(dateNow).format('DD');
                       var monthToday = moment(dateNow).format('M');
@@ -242,6 +237,8 @@
 
                       var dayofweek = moment(eventDateRaw).format('d');
                       var hourNminutes = moment(eventDateRaw).format('HH:mm');
+
+                      
 
                       //var a = moment([year, month, day]);
                       //var b = moment([yearToday, monthToday, dayToday]);
@@ -261,6 +258,7 @@
 
                       var cityoftheEvent = "";
                       var streetoftheEvent = "";
+                      var coversource = "";
                       try 
                       {
                           cityoftheEvent = response.data[i].place.location.city;
@@ -279,6 +277,18 @@
                           streetoftheEvent = "";
                       }
 
+                      
+                      try
+                      {
+                          coversource = response.data[i].cover.source;
+                      }
+                      catch(err)
+                      {
+                          coversource = "";
+                      }
+
+                      console.log(response);
+
                       var obj = {
                         "id": response.data[i].id,
                         "diffindays": diffindays,
@@ -294,7 +304,7 @@
                         "location_name": response.data[i].place.name,
                         "location_city": cityoftheEvent,
                         "street": streetoftheEvent,
-                        "cover": response.data[i].cover.source,
+                        "cover": coversource,
                         "urlevent": '"' + "https://www.facebook.com/events/" + response.data[i].id + '"'
                       };
                       list.push(obj);
@@ -331,7 +341,7 @@
                     "<strong>" + list[j].name + "</strong><br/>" +
                     "<span class='dayofweek'><span style='color:#e34e60;'>" + vdays[list[j].dayofweek] + "</span> · " + list[j].hourNminutes + " · " + list[j].location_name + "</span><br/>" +
 
-                    "<span class='street'><img src='http://listaalternativa.com/imgs/mapa.png' style='width:12px;' />&nbsp;" + 
+                    "<span class='street'><img src='imgs/mapa.png' style='width:12px;' />&nbsp;" + 
                     list[j].street + " - " + list[j].location_city + "</span><br/>" + 
                     "<span class='confirmed'>" + list[j].attending_count + " confirmaram presença</span> · " +
                     "<span class='confirmed'>" + list[j].maybe_count + " tem interesse</span>" +

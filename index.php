@@ -1,8 +1,8 @@
 <?php
-$servername = "50.62.209.160";
-$username = "philvsf";
-$password = "i0riip12";
-$dbname = "la";
+$servername = "br-cdbr-azure-south-b.cloudapp.net";
+$username = "b3e430f8dfef1e";
+$password = "95df8e51";
+$dbname = "acsm_5fe05832cd7250c";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -52,8 +52,8 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
 <html lang="pt-br">
   <head>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,24 +63,24 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
     <meta name="author" content="Philipe Tavares">
     <meta name="keywords" content="lista, alternativa, la, amiga, festa, balada, rio de janeiro, rj, rio, sp, brasilia, df, sampa, sao paulo, brasil, rock, indie, metal, poprock, teatro odisseia, casa da matriz, bagaceira, pop">
     
-    <link rel="icon" href="http://listaalternativa.com/favicon.ico">
+    <link rel="icon" href="favicon.ico">
     
     <title>Lista Alternativa</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="http://listaalternativa.com/css/style.css" rel="stylesheet">
-    <link href="http://listaalternativa.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="http://listaalternativa.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="http://listaalternativa.com/jumbotron-narrow.css" rel="stylesheet">
+    <link href="jumbotron-narrow.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="http://listaalternativa.com/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -92,7 +92,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
   <!--<body style="background-image: url(http://www.planwallpaper.com/static/images/6790904-free-background-wallpaper.jpg);">-->
   <body style="background-color:#eee; font-family: 'Roboto Condensed', sans-serif;">
     
-    <script src="http://listaalternativa.com/js/moment.js"></script>
+    <script src="js/moment.js"></script>
     <script>
 
       // Load the SDK asynchronously
@@ -186,7 +186,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
           </ul>
         </nav>
         -->
-        <h3 class="text-muted" style="font-weight:bold; font-size:25px;"><img src="http://listaalternativa.com/imgs/icon.png" style="width:40px;" />lista alternativa</h3>
+        <h3 class="text-muted" style="font-weight:bold; font-size:25px;"><img src="imgs/icon.png" style="width:40px;" />lista alternativa</h3>
         <!--<div id="status"></div>-->
       </div>
       
@@ -197,7 +197,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
         <br/>
       </div>
 
-      <img src="http://listaalternativa.com/imgs/loading.gif" id="loading" style="display:none; margin-bottom: 25px; margin-top:10px;" />
+      <img src="imgs/loading.gif" id="loading" style="display:none; margin-bottom: 25px; margin-top:10px;" />
 
       <div id="filters" class="filters" style="margin-top:10px; margin-bottom:10px; display: none;">
         <form method="get" action="" name="filters">
@@ -222,7 +222,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
 
     </div> <!-- /container -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="http://listaalternativa.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
     <!-- faz a ordenação -->
     <script id="jsbin-javascript">
     function order()                                           //função que ordena os eventos pela data de forma crescente
@@ -402,7 +402,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
                     "<strong>" + list[j].name + "</strong><br/>" +
                     "<span class='dayofweek'><span style='color:#e34e60;'>" + vdays[list[j].dayofweek] + "</span> · " + list[j].hourNminutes + " · " + list[j].location_name + "</span><br/>" +
 
-                    "<span class='street'><img src='http://listaalternativa.com/imgs/mapa.png' style='width:12px;' />&nbsp;" + 
+                    "<span class='street'><img src='imgs/mapa.png' style='width:12px;' />&nbsp;" + 
                     list[j].street + " - " + list[j].location_city + "</span><br/>" + 
                     "<span class='confirmed'>" + list[j].attending_count + " confirmaram presença</span> · " +
                     "<span class='confirmed'>" + list[j].maybe_count + " tem interesse</span>" +

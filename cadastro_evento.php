@@ -1,8 +1,8 @@
 <?php
-$servername = "50.62.209.160";
-$username = "philvsf";
-$password = "i0riip12";
-$dbname = "la";
+$servername = "br-cdbr-azure-south-b.cloudapp.net";
+$username = "b3e430f8dfef1e";
+$password = "95df8e51";
+$dbname = "acsm_5fe05832cd7250c";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -104,7 +104,7 @@ if (!is_null($id))
 	<form class="form" method="post" id="form1" action = "<?php $_PHP_SELF ?>">
 		<p><input name="id" type="text" placeholder="id do evento" id="id" required="required" /></p>
 		<p><input name="name" type="text" placeholder="Nome do evento" id="nome"  /></p>
-		<p><input name="type" type="text" placeholder="Tipo do evento" id="type"  /></p>
+		<p><input name="type" type="text" placeholder="Tipo do evento" id="type" value="rock"  /></p>
 		<p><input name="state" type="text" placeholder="Estado do evento" value="rj" id="estado"  /></p>
 		<p><input name="city" type="text" placeholder="Cidade do evento" value="rio-de-janeiro" id="city"  /></p>
 		<p>

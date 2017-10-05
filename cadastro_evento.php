@@ -6,6 +6,8 @@ $dbname = "acsm_5fe05832cd7250c";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+mysql_query("SET NAMES 'utf8'");
 // Check connection
 if (!$conn) 
 {
@@ -24,7 +26,7 @@ else
 
 if (isset($_POST['name']))
 {
-  $name = $_POST['name'];
+  $name = utf8_encode($_POST['name']);
 } 
 else 
 {
@@ -33,7 +35,7 @@ else
 
 if (isset($_POST['type']))
 {
-  $type = $_POST['type'];
+  $type = utf8_encode($_POST['type']);
 } 
 else 
 {
@@ -42,7 +44,7 @@ else
 
 if (isset($_POST['state']))
 {
-  $state = $_POST['state'];
+  $state = utf8_encode($_POST['state']);
 } 
 else 
 {
@@ -51,7 +53,7 @@ else
 
 if (isset($_POST['city']))
 {
-  $city = $_POST['city'];
+  $city = utf8_encode($_POST['city']);
 } 
 else 
 {
@@ -95,8 +97,12 @@ if (!is_null($id))
 ?>
 
 
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cadastro de evento</title>
 </head>
 <body>

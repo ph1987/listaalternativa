@@ -36,7 +36,7 @@ if(isset($_GET['local']))
 }
 
 
-$query = "SELECT * FROM events WHERE city LIKE '%" . $local . "%'";
+$query = "SELECT * FROM events WHERE status = 1 AND city LIKE '%" . $local . "%'";
 
 
 $dados = mysqli_query($conn, $query);
@@ -54,6 +54,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +70,10 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
 
     <!-- Bootstrap core CSS -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -192,7 +196,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
       
       <div id="loginbutton" style="display:none;">
         <br/>
-        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" data-scope="public_profile,user_events,user_friends,rsvp_event" onlogin="checkLoginState();"></div>
+        <div class="fb-login-button" autologoutlink="true" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" data-scope="public_profile,user_events,user_friends,rsvp_event" onlogin="checkLoginState();"></div>
         <p style="font-size:16px; margin-top:5px;">faça login com facebook pra saber as boas da semana :D</p>
         <br/>
       </div>
@@ -201,15 +205,11 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
 
       <div id="filters" class="filters" style="margin-top:10px; margin-bottom:10px; display: none;">
         <form method="get" action="" name="filters">
-        <select id="local" name="local" class="slctfilters" onchange="javascript:form.submit();">
-          <option value="brasilia" <?= ($local == 'brasilia') ? 'selected="selected"':'';  ?>>&nbsp;Brasília - DF</option>
-          <option value="rio-de-janeiro" <?= ($local == 'rio-de-janeiro') ? 'selected="selected"':''; ?>>&nbsp;Rio de Janeiro - RJ</option>
-          <option value="sao-paulo" <?= ($local == 'sao-paulo') ? 'selected="selected"':'';  ?>>&nbsp;São Paulo - SP</option>
-        </select>
-        <!--<a href="/" class="btnfilters <?= ($tipo == '' || is_null($tipo)) ? 'active':''; ?>" style="text-decoration: none;">&#9835; todos</a>
-        <a href="<?php $url ?>/index.php?tipo=rock" class="btnfilters <?= ($tipo == 'rock') ? 'active':''; ?>" style="text-decoration: none;">&#9835; rock</a>
-        <a href="<?php $url ?>/index.php?tipo=pop" class="btnfilters <?= ($tipo == 'pop') ? 'active':''; ?>" style="text-decoration: none;">&#9835; pop</a>
-        <a href="<?php $url ?>/index.php?tipo=bagaceira" class="btnfilters <?= ($tipo == 'bagaceira') ? 'active':''; ?>" style="text-decoration: none;">&#9835; bagaceira</a>-->
+          <select id="local" name="local" class="selectpicker" onchange="javascript:form.submit();">
+            <option data-icon="glyphicon glyphicon-globe" value="brasilia" <?= ($local == 'brasilia') ? 'selected="selected"':'';  ?>>&nbsp;Brasília - DF</option>
+            <option data-icon="glyphicon glyphicon-globe" value="rio-de-janeiro" <?= ($local == 'rio-de-janeiro') ? 'selected="selected"':''; ?>>&nbsp;Rio de Janeiro - RJ</option>
+            <option data-icon="glyphicon glyphicon-globe" value="sao-paulo" <?= ($local == 'sao-paulo') ? 'selected="selected"':'';  ?>>&nbsp;São Paulo - SP</option>
+          </select>
         </form>
       </div>
 
@@ -265,7 +265,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
               {
             ?>
             var id_event = "<?php echo $linha['id']; ?>";
-            list_id_events.push("/" + id_event + "/events");
+            list_id_events.push(id_event);
             <?php
               }
                 while($linha = mysqli_fetch_assoc($dados));
@@ -276,8 +276,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
         var listeventsLen = list_id_events.length;
         for (k=0; k<listeventsLen; k++)
         {
-            FB.api(list_id_events[k], 'GET', { "fields": "start_time,cover,name,attending_count, place, maybe_count" },
-            function (response)
+            FB.api(list_id_events[k] + "/events?fields=start_time,cover,name,attending_count,place,maybe_count&limit=50&pretty=0", function (response)
             {
                 var list = [];
                 for(i=0; i<response.data.length; i++)
@@ -390,8 +389,6 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
                     {
                       dateFloatingButton = "<p class='dateEvent'>" + list[j].day + "/" + vmonths[list[j].month] + "</p><div class='clear'></div>";
                     }
-
-                    console.log(list[j].diffindays);
 
                     events = events + 
                     "<li title='Clique para ir até a página do evento' onClick='window.open(" + list[j].urlevent + ")'><span style='display:none;'>" + list[j].date + "</span>" + 

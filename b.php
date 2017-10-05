@@ -190,14 +190,13 @@
         var list_events_added = [];
 
         //adicionando ids das páginas que criam eventos
-        list_id_events.push("/287688837913011/events");   //jack dnls
+        list_id_events.push("/1381805975187095/events");   //jack dnls
 
         var listeventsLen = list_id_events.length;
 
         for (k=0; k<listeventsLen; k++)
         {
-            FB.api(list_id_events[k], 'GET', { "fields": "start_time,cover,name,attending_count, place, maybe_count" }, { "limit": "50" },
-            function (response)
+            FB.api("1381805975187095/events?fields=start_time,cover,name,attending_count,place,maybe_count&limit=50&pretty=0", function (response)
             {
                 var list = [];
                 for(i=0; i<response.data.length; i++)

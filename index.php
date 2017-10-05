@@ -117,6 +117,7 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
         {
           $("#loading").show();
           $("#loginbutton").hide();
+          $("#logout").show();
           testAPI();
         } 
         else if (response.status === 'not_authorized') 
@@ -130,6 +131,15 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
           $("#loginbutton").show();
           //document.getElementById('status').innerHTML = 'Loga no facebook ae! :)';
         }
+      }
+
+      function logout() {
+        FB.logout(function(response) {
+          $("#events").hide();
+          $("#filters").hide();
+          $("#logout").hide();
+          statusChangeCallback(response);
+        });
       }
 
       function checkLoginState() {
@@ -151,6 +161,8 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
       {
         statusChangeCallback(response);
       });
+
+
 
       };
 
@@ -190,13 +202,14 @@ $total = mysqli_num_rows($dados); //calcula quantos dados retornaram $total = my
           </ul>
         </nav>
         -->
-        <h3 class="text-muted" style="font-weight:bold; font-size:25px;"><img src="imgs/icon.png" style="width:40px;" />lista alternativa</h3>
+        <span class="text-muted" style="font-weight:bold; font-size:25px;"><img src="imgs/icon.png" style="width:40px;" />lista alternativa</span>
+        <button class="logout" id="logout" onclick="javascript:logout();" style="display:none;">Logout</button>
         <!--<div id="status"></div>-->
       </div>
       
       <div id="loginbutton" style="display:none;">
         <br/>
-        <div class="fb-login-button" autologoutlink="true" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" data-scope="public_profile,user_events,user_friends,rsvp_event" onlogin="checkLoginState();"></div>
+        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" data-scope="public_profile,user_events,user_friends,rsvp_event" onlogin="checkLoginState();"></div>
         <p style="font-size:16px; margin-top:5px;">faça login com facebook pra saber as boas da semana :D</p>
         <br/>
       </div>

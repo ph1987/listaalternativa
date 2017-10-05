@@ -114,3 +114,20 @@ a.btnfilters.active {
     pointer-events: none;
     cursor: default;
 }
+
+.logout 
+{
+    float: right;
+    background-color: #6d84b4;
+    color: #fff;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 7px 11px 7px 11px;
+}
+
+.logout:hover {
+    background-color: #3b5998; /* Green */
+    color: white;
+}

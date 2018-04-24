@@ -1,9 +1,4 @@
 <?php
-$servername = "br-cdbr-azure-south-b.cloudapp.net";
-$username = "b3e430f8dfef1e";
-$password = "95df8e51";
-$dbname = "acsm_5fe05832cd7250c";
-
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
